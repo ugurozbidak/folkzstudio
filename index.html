@@ -1,987 +1,235 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FolkzStudio — Small products, thoughtfully built.</title>
-
-    <meta
-        name="description"
-        content="FolkzStudio is an independent product studio building small, useful and thoughtful digital products."
-    >
-
-    <meta name="theme-color" content="#f4f2ec">
-
-    <meta property="og:title" content="FolkzStudio">
-    <meta
-        property="og:description"
-        content="Small products, thoughtfully built."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fol.kz">
-
-    <style>
-        :root {
-            --bg: #f4f2ec;
-            --surface: #ebe9e1;
-            --text: #17231d;
-            --muted: #697069;
-            --line: rgba(23, 35, 29, 0.12);
-            --accent: #263d31;
-            --white: #faf9f5;
-
-            --max-width: 1240px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family:
-                Inter,
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
-                "Segoe UI",
-                sans-serif;
-
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        ::selection {
-            background: var(--text);
-            color: var(--bg);
-        }
-
-        .container {
-            width: min(calc(100% - 48px), var(--max-width));
-            margin: 0 auto;
-        }
-
-        /* ---------------- NAVIGATION ---------------- */
-
-        nav {
-            height: 88px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 650;
-            letter-spacing: -0.045em;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        .nav-link {
-            transition: color 180ms ease;
-        }
-
-        .nav-link:hover {
-            color: var(--text);
-        }
-
-        .nav-contact {
-            color: var(--text);
-
-            border-bottom: 1px solid var(--text);
-            padding-bottom: 3px;
-        }
-
-        /* ---------------- HERO ---------------- */
-
-        .hero {
-            min-height: calc(100vh - 88px);
-
-            display: flex;
-            align-items: center;
-
-            padding: 80px 0 120px;
-        }
-
-        .hero-inner {
-            width: 100%;
-        }
-
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            color: var(--muted);
-
-            font-size: 13px;
-            letter-spacing: 0.01em;
-
-            margin-bottom: 34px;
-        }
-
-        .eyebrow-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-
-        h1 {
-            max-width: 1080px;
-
-            font-size: clamp(58px, 9vw, 132px);
-            line-height: 0.91;
-
-            font-weight: 560;
-            letter-spacing: -0.075em;
-        }
-
-        .hero-bottom {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-
-            gap: 40px;
-
-            margin-top: 70px;
-        }
-
-        .hero-description {
-            max-width: 500px;
-
-            color: var(--muted);
-
-            font-size: 19px;
-            line-height: 1.55;
-            letter-spacing: -0.015em;
-        }
-
-        .scroll-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            color: var(--muted);
-
-            font-size: 12px;
-            white-space: nowrap;
-        }
-
-        .scroll-line {
-            width: 42px;
-            height: 1px;
-            background: var(--line);
-        }
-
-        /* ---------------- SECTION ---------------- */
-
-        section {
-            padding: 150px 0;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-
-            padding-bottom: 45px;
-
-            border-bottom: 1px solid var(--line);
-        }
-
-        .section-number {
-            color: var(--muted);
-
-            font-size: 12px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .section-title {
-            max-width: 650px;
-
-            font-size: clamp(38px, 5vw, 66px);
-            line-height: 1;
-            letter-spacing: -0.055em;
-            font-weight: 520;
-        }
-
-        /* ---------------- PRODUCT ---------------- */
-
-        .product {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            min-height: 570px;
-
-            border-bottom: 1px solid var(--line);
-        }
-
-        .product-info {
-            padding: 70px 70px 70px 0;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-label {
-            color: var(--muted);
-
-            font-size: 12px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-
-        .product-name {
-            margin-top: 30px;
-
-            font-size: clamp(54px, 7vw, 94px);
-            line-height: 0.9;
-
-            font-weight: 560;
-            letter-spacing: -0.075em;
-        }
-
-        .product-description {
-            max-width: 430px;
-
-            margin-top: 35px;
-
-            color: var(--muted);
-
-            font-size: 18px;
-            line-height: 1.55;
-        }
-
-        .product-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-
-            width: fit-content;
-
-            margin-top: 45px;
-
-            font-size: 14px;
-
-            border-bottom: 1px solid var(--text);
-            padding-bottom: 5px;
-        }
-
-        .arrow {
-            transition: transform 180ms ease;
-        }
-
-        .product-link:hover .arrow {
-            transform: translate(3px, -3px);
-        }
-
-        .product-visual {
-            margin: 32px 0;
-
-            min-height: 500px;
-
-            background: var(--accent);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            overflow: hidden;
-
-            position: relative;
-        }
-
-        .visual-map {
-            position: absolute;
-            inset: 0;
-
-            opacity: 0.17;
-
-            background-image:
-                linear-gradient(
-                    28deg,
-                    transparent 46%,
-                    rgba(255,255,255,.5) 47%,
-                    transparent 48%
-                ),
-                linear-gradient(
-                    142deg,
-                    transparent 46%,
-                    rgba(255,255,255,.4) 47%,
-                    transparent 48%
-                );
-
-            background-size: 80px 80px;
-            transform: rotate(-8deg) scale(1.3);
-        }
-
-        .visual-card {
-            position: relative;
-
-            width: 260px;
-            height: 360px;
-
-            background: var(--white);
-
-            border-radius: 26px;
-
-            box-shadow:
-                0 30px 70px rgba(0,0,0,.22);
-
-            transform: rotate(5deg);
-
-            padding: 20px;
-        }
-
-        .visual-card-top {
-            height: 8px;
-            width: 80px;
-
-            border-radius: 4px;
-
-            background: var(--accent);
-
-            margin-bottom: 28px;
-        }
-
-        .visual-map-inner {
-            height: 220px;
-
-            background:
-                radial-gradient(
-                    circle at 35% 45%,
-                    #263d31 0 5px,
-                    transparent 6px
-                ),
-                radial-gradient(
-                    circle at 70% 30%,
-                    #263d31 0 5px,
-                    transparent 6px
-                ),
-                radial-gradient(
-                    circle at 58% 72%,
-                    #263d31 0 5px,
-                    transparent 6px
-                ),
-                #e9e7df;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .visual-map-inner::before,
-        .visual-map-inner::after {
-            content: "";
-
-            position: absolute;
-
-            width: 160%;
-            height: 1px;
-
-            background: rgba(38,61,49,.18);
-
-            left: -30%;
-        }
-
-        .visual-map-inner::before {
-            top: 45%;
-            transform: rotate(-25deg);
-        }
-
-        .visual-map-inner::after {
-            top: 65%;
-            transform: rotate(18deg);
-        }
-
-        .visual-card-lines {
-            margin-top: 22px;
-
-            display: grid;
-            gap: 9px;
-        }
-
-        .visual-card-lines span {
-            display: block;
-
-            height: 5px;
-
-            background: #dddcd5;
-
-            border-radius: 3px;
-        }
-
-        .visual-card-lines span:nth-child(1) {
-            width: 75%;
-        }
-
-        .visual-card-lines span:nth-child(2) {
-            width: 92%;
-        }
-
-        .visual-card-lines span:nth-child(3) {
-            width: 58%;
-        }
-
-        /* ---------------- PHILOSOPHY ---------------- */
-
-        .philosophy {
-            display: grid;
-
-            grid-template-columns: 1fr 2fr;
-
-            gap: 80px;
-        }
-
-        .philosophy-label {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .philosophy-text {
-            max-width: 780px;
-
-            font-size: clamp(32px, 4.5vw, 62px);
-            line-height: 1.02;
-
-            letter-spacing: -0.055em;
-            font-weight: 500;
-        }
-
-        .philosophy-text span {
-            color: #9a9d96;
-        }
-
-        /* ---------------- ABOUT ---------------- */
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 80px;
-
-            padding-top: 70px;
-        }
-
-        .about-large {
-            font-size: 25px;
-            line-height: 1.35;
-            letter-spacing: -0.025em;
-        }
-
-        .about-small {
-            max-width: 430px;
-
-            color: var(--muted);
-
-            font-size: 17px;
-            line-height: 1.65;
-        }
-
-        /* ---------------- CONTACT ---------------- */
-
-        .contact-section {
-            padding-bottom: 110px;
-        }
-
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-
-            gap: 50px;
-
-            padding-top: 70px;
-        }
-
-        .contact-title {
-            max-width: 850px;
-
-            font-size: clamp(48px, 7vw, 100px);
-            line-height: .92;
-
-            font-weight: 540;
-            letter-spacing: -0.075em;
-        }
-
-        .contact-email {
-            flex-shrink: 0;
-
-            font-size: 15px;
-
-            border-bottom: 1px solid var(--text);
-
-            padding-bottom: 5px;
-        }
-
-        /* ---------------- FOOTER ---------------- */
-
-        footer {
-            border-top: 1px solid var(--line);
-
-            padding: 28px 0 34px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            color: var(--muted);
-
-            font-size: 12px;
-        }
-
-        .footer-right {
-            display: flex;
-            gap: 24px;
-        }
-
-        /* ---------------- ANIMATION ---------------- */
-
-        @keyframes reveal {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            animation: reveal .8s cubic-bezier(.22,1,.36,1) both;
-        }
-
-        .delay-1 {
-            animation-delay: .08s;
-        }
-
-        .delay-2 {
-            animation-delay: .16s;
-        }
-
-        .delay-3 {
-            animation-delay: .24s;
-        }
-
-        /* ---------------- RESPONSIVE ---------------- */
-
-        @media (max-width: 800px) {
-
-            .container {
-                width: min(calc(100% - 36px), var(--max-width));
-            }
-
-            nav {
-                height: 74px;
-            }
-
-            .nav-right {
-                gap: 18px;
-            }
-
-            .nav-link {
-                display: none;
-            }
-
-            .hero {
-                min-height: calc(100vh - 74px);
-                padding: 60px 0 80px;
-            }
-
-            h1 {
-                font-size: clamp(54px, 16vw, 90px);
-            }
-
-            .hero-bottom {
-                align-items: flex-start;
-                flex-direction: column;
-                margin-top: 50px;
-            }
-
-            .hero-description {
-                font-size: 17px;
-            }
-
-            .scroll-indicator {
-                display: none;
-            }
-
-            section {
-                padding: 100px 0;
-            }
-
-            .section-header {
-                padding-bottom: 30px;
-            }
-
-            .section-title {
-                font-size: 42px;
-            }
-
-            .product {
-                grid-template-columns: 1fr;
-            }
-
-            .product-info {
-                padding: 55px 0 30px;
-            }
-
-            .product-visual {
-                min-height: 430px;
-                margin: 10px 0 0;
-            }
-
-            .visual-card {
-                width: 220px;
-                height: 310px;
-            }
-
-            .visual-map-inner {
-                height: 185px;
-            }
-
-            .philosophy {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .philosophy-text {
-                font-size: 38px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-large {
-                font-size: 22px;
-            }
-
-            .contact-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .contact-title {
-                font-size: 54px;
-            }
-
-            .footer-inner {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 14px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Folkz Studio · Made for folks.</title>
+<meta name="description" content="Folkz is an independent app studio making small, carefully made apps for everyday moments: Untime, Opened and CamperBase.">
+<link rel="canonical" href="https://fol.kz/">
+<meta name="theme-color" content="#F6F3EE">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fol.kz/">
+<meta property="og:title" content="Folkz Studio · Made for folks.">
+<meta property="og:description" content="Small, carefully made apps for the everyday moments that matter.">
+<meta property="og:image" content="https://fol.kz/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ink: #1C1B19;
+    --bg: #F6F3EE;
+    --muted: #5E5950;
+    --accent: #C2502E;
+    --accent-dark: #9E3F22;
+    --line: #E2DCD2;
+    --card: #FBFAF7;
+    --on-dark-muted: #CFC9BF;
+    --display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+    --pad: clamp(24px, 5.5vw, 80px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-dark); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; margin: 0; }
+  p { margin: 0; }
+
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; background: var(--ink); color: var(--bg); padding: 10px 16px; z-index: 10; }
+
+  /* Header */
+  .site-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: calc(env(safe-area-inset-top, 0px) + 20px) var(--pad) 20px;
+    max-width: 1440px; margin: 0 auto;
+  }
+  .site-header .logo img { height: clamp(26px, 2.4vw, 32px); width: auto; }
+  .site-nav { display: flex; gap: clamp(20px, 2.5vw, 36px); }
+  .site-nav a { color: var(--ink); text-decoration: none; font-size: 16px; padding: 10px 0; }
+  .site-nav a:hover { color: var(--accent); }
+  .site-nav .secondary { display: inline; }
+  @media (max-width: 640px) { .site-nav .secondary { display: none; } }
+
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--pad); }
+  section { scroll-margin-top: 24px; }
+
+  /* Hero */
+  .hero { padding-top: clamp(48px, 8vw, 120px); padding-bottom: clamp(72px, 10vw, 140px); display: grid; gap: clamp(24px, 2.5vw, 36px); }
+  .hero .kicker { font-size: 15px; color: var(--muted); letter-spacing: 0.02em; }
+  .hero h1 { font-size: clamp(64px, 12.2vw, 176px); line-height: 0.95; letter-spacing: -0.035em; }
+  .hero h1 .dot { color: var(--accent); }
+  .hero .lede { max-width: 620px; font-size: clamp(18px, 1.6vw, 22px); color: var(--muted); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 24px;
+    border-radius: 999px; background: var(--ink); color: var(--bg); text-decoration: none;
+    font-size: 16px; font-weight: 500; justify-self: start;
+  }
+  .btn:hover { background: #33312D; color: var(--bg); }
+
+  /* Apps */
+  .block { border-top: 1px solid var(--line); padding-top: clamp(48px, 7vw, 96px); padding-bottom: clamp(48px, 7vw, 96px); }
+  .apps-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 48px; margin-bottom: clamp(32px, 3.5vw, 48px); }
+  .apps-head h2, .about h2 { font-size: clamp(40px, 4.5vw, 64px); letter-spacing: -0.03em; line-height: 1; }
+  .apps-head p { max-width: 420px; font-size: 17px; color: var(--muted); }
+  .apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  @media (max-width: 960px) { .apps { grid-template-columns: 1fr; gap: 20px; max-width: 560px; } }
+  .app { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .app .band { height: clamp(200px, 17vw, 240px); display: flex; align-items: center; justify-content: center; }
+  .app .band img { width: 112px; height: 112px; border-radius: 26px; background: #fff; box-shadow: 0 8px 24px rgba(28, 27, 25, 0.12); }
+  .app .body { padding: 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+  .app h3 { font-size: 30px; letter-spacing: -0.02em; }
+  .app .tag { font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .app .desc { font-size: 16px; line-height: 1.55; color: var(--muted); flex-grow: 1; }
+  .app .actions { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 12px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 18px;
+    border-radius: 999px; font-size: 15px; font-weight: 500; text-decoration: none;
+  }
+  .pill.solid { background: var(--ink); color: var(--bg); }
+  .pill.solid:hover { background: #33312D; color: var(--bg); }
+  .pill.ghost { border: 1px solid var(--line); color: var(--ink); }
+  .pill.ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .pill svg { width: 14px; height: 14px; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5.5vw, 80px); padding-top: clamp(56px, 8vw, 120px); padding-bottom: clamp(56px, 8vw, 120px); }
+  @media (max-width: 800px) { .about { grid-template-columns: 1fr; } }
+  .about .text { display: grid; gap: 20px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: var(--muted); max-width: 60ch; }
+
+  /* Contact */
+  .contact { background: var(--ink); color: var(--bg); }
+  .contact .wrap { padding-top: clamp(56px, 8vw, 120px); padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); display: grid; gap: 24px; }
+  .contact h2 { font-size: clamp(48px, 6.7vw, 96px); letter-spacing: -0.035em; line-height: 1; }
+  .contact h2 .dot { color: var(--accent); }
+  .contact p { max-width: 560px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: var(--on-dark-muted); }
+  .contact .mail {
+    justify-self: start; font-family: var(--display); font-weight: 600; font-size: clamp(24px, 2.5vw, 36px);
+    color: var(--bg); text-decoration: underline; text-decoration-color: var(--accent);
+    text-underline-offset: 8px; text-decoration-thickness: 3px;
+  }
+  .contact .mail:hover { color: #fff; text-decoration-color: #E06A45; }
+  .site-footer {
+    margin-top: clamp(56px, 8vw, 120px); padding-top: 32px; border-top: 1px solid #3A3834;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
+    font-size: 14px; color: var(--on-dark-muted);
+  }
+  .site-footer img { height: 24px; width: auto; }
+  .site-footer .links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+  .site-footer a { color: var(--on-dark-muted); }
+  .site-footer a:hover { color: var(--bg); }
+</style>
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-
-    <header class="container">
-        <nav>
-            <a href="/" class="logo">FolkzStudio</a>
-
-            <div class="nav-right">
-                <a href="#products" class="nav-link">Products</a>
-                <a href="#studio" class="nav-link">Studio</a>
-
-                <a
-                    href="mailto:hello@fol.kz"
-                    class="nav-contact"
-                >
-                    Contact
-                </a>
-            </div>
-        </nav>
-    </header>
-
-
-    <!-- HERO -->
-
-    <main>
-
-        <section class="hero">
-            <div class="container hero-inner">
-
-                <div class="eyebrow reveal">
-                    <span class="eyebrow-dot"></span>
-                    Independent product studio · 2026
-                </div>
-
-                <h1 class="reveal delay-1">
-                    Small products.<br>
-                    Thoughtfully built.
-                </h1>
-
-                <div class="hero-bottom reveal delay-2">
-
-                    <p class="hero-description">
-                        FolkzStudio is a small product studio creating
-                        useful, focused and human-centered digital products.
-                    </p>
-
-                    <div class="scroll-indicator">
-                        <span class="scroll-line"></span>
-                        Scroll to explore
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- PRODUCTS -->
-
-        <section id="products">
-
-            <div class="container">
-
-                <div class="section-header">
-
-                    <span class="section-number">
-                        01 / Products
-                    </span>
-
-                    <h2 class="section-title">
-                        Things we are building.
-                    </h2>
-
-                </div>
-
-
-                <article class="product">
-
-                    <div class="product-info">
-
-                        <div>
-
-                            <div class="product-label">
-                                Product · Outdoor
-                            </div>
-
-                            <h3 class="product-name">
-                                CamperBase
-                            </h3>
-
-                            <p class="product-description">
-                                A community and discovery platform for
-                                campers, caravan owners and people who
-                                simply love being outdoors.
-                            </p>
-
-                            <a
-                                href="https://camperbase.org"
-                                class="product-link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Explore CamperBase
-                                <span class="arrow">↗</span>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="product-visual" aria-hidden="true">
-
-                        <div class="visual-map"></div>
-
-                        <div class="visual-card">
-
-                            <div class="visual-card-top"></div>
-
-                            <div class="visual-map-inner"></div>
-
-                            <div class="visual-card-lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- PHILOSOPHY -->
-
-        <section>
-
-            <div class="container">
-
-                <div class="philosophy">
-
-                    <div class="philosophy-label">
-                        02 / Philosophy
-                    </div>
-
-                    <p class="philosophy-text">
-                        We like small teams, clear ideas and products
-                        that earn their place in people's lives.
-                        <span>
-                            No unnecessary complexity. No noise.
-                        </span>
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- STUDIO -->
-
-        <section id="studio">
-
-            <div class="container">
-
-                <div class="section-header">
-
-                    <span class="section-number">
-                        03 / Studio
-                    </span>
-
-                    <h2 class="section-title">
-                        Small by design.
-                    </h2>
-
-                </div>
-
-
-                <div class="about-grid">
-
-                    <p class="about-large">
-                        FolkzStudio is an independent product studio
-                        founded in 2026.
-                    </p>
-
-                    <p class="about-small">
-                        We design and build digital products from idea
-                        to launch. Our focus is simple: understand the
-                        problem, remove the unnecessary, and make
-                        something people genuinely want to use.
-                        <br><br>
-                        We are a small team, which means ideas can move
-                        quickly and every detail still matters.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- CONTACT -->
-
-        <section class="contact-section">
-
-            <div class="container">
-
-                <div class="section-number">
-                    04 / Contact
-                </div>
-
-                <div class="contact-content">
-
-                    <h2 class="contact-title">
-                        Have an idea?<br>
-                        Let's talk.
-                    </h2>
-
-                    <a
-                        href="mailto:hello@fol.kz"
-                        class="contact-email"
-                    >
-                        hello@fol.kz ↗
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="container footer-inner">
-
-            <span>
-                © 2026 FolkzStudio
-            </span>
-
-            <div class="footer-right">
-
-                <a
-                    href="https://camperbase.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    CamperBase
-                </a>
-
-                <a href="mailto:hello@fol.kz">
-                    Email
-                </a>
-
-                <span>
-                    fol.kz
-                </span>
-
-            </div>
-
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="logo" href="/" aria-label="Folkz Studio home"><img src="/assets/folkz-wordmark.svg" alt="folkz" width="96" height="32"></a>
+  <nav class="site-nav" aria-label="Main">
+    <a class="secondary" href="#apps">Apps</a>
+    <a class="secondary" href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap hero">
+    <p class="kicker">Folkz Studio, an independent app studio</p>
+    <h1>Made for folks<span class="dot">.</span></h1>
+    <p class="lede">Small, carefully made apps for the everyday moments that matter: a letter to the future, a product you opened last spring, the next place to stop for the night.</p>
+    <a class="btn" href="#apps">See our apps</a>
+  </section>
+
+  <section id="apps" class="wrap block" aria-labelledby="apps-title">
+    <div class="apps-head">
+      <h2 id="apps-title">Our apps</h2>
+      <p>Three apps, each with its own character. All built with the same care.</p>
+    </div>
+    <div class="apps">
+      <article class="app">
+        <div class="band" style="background:#FCE5D3"><img src="/assets/icons/untime.png" alt="Untime app icon" width="112" height="112" loading="lazy"></div>
+        <div class="body">
+          <h3>Untime</h3>
+          <p class="tag">Write it now. Open it later.</p>
+          <p class="desc">Time-locked messages for the people you love. Seal a note today and choose the day it opens.</p>
+          <div class="actions">
+            <a class="pill solid" href="https://apps.apple.com/app/id6760946267" rel="noopener">App Store</a>
+          </div>
         </div>
+      </article>
 
+      <article class="app">
+        <div class="band" style="background:#FBE3E8"><img src="/assets/icons/opened.png" alt="Opened app icon" width="112" height="112" loading="lazy"></div>
+        <div class="body">
+          <h3>Opened</h3>
+          <p class="tag">Know what’s still good.</p>
+          <p class="desc">A calm tracker for skincare and cosmetics. Log the day you open a product and get a nudge before it expires.</p>
+          <div class="actions">
+            <a class="pill solid" href="https://apps.apple.com/app/id6761142839" rel="noopener">App Store</a>
+            <a class="pill ghost" href="https://openedapp.net" rel="noopener">openedapp.net
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="app">
+        <div class="band" style="background:#2E5E4E"><img src="/assets/icons/camperbase.png" alt="CamperBase app icon" width="112" height="112" loading="lazy"></div>
+        <div class="body">
+          <h3>CamperBase</h3>
+          <p class="tag">Your base for life outdoors.</p>
+          <p class="desc">Campsites, caravan spots and offline maps, with a community of people who live on the road.</p>
+          <div class="actions">
+            <a class="pill solid" href="https://apps.apple.com/app/id6789578719" rel="noopener">App Store</a>
+            <a class="pill ghost" href="https://camperbase.org" rel="noopener">camperbase.org
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="wrap block about" aria-labelledby="about-title">
+    <h2 id="about-title">A small studio, on purpose.</h2>
+    <div class="text">
+      <p>Folkz is an independent studio run by one person. Every app is designed, built and looked after end to end, without growth hacks or noise.</p>
+      <p>The idea is simple: make useful things people actually enjoy using, and keep making them better.</p>
+    </div>
+  </section>
+</main>
+
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title">Say hello<span class="dot">.</span></h2>
+    <p>Questions, feedback, press or partnerships. Everything lands in the same inbox.</p>
+    <a class="mail" href="mailto:hello@fol.kz">hello@fol.kz</a>
+    <footer class="site-footer">
+      <img src="/assets/folkz-wordmark-light.svg" alt="folkz" width="72" height="24">
+      <div class="links">
+        <a href="https://instagram.com/folkzstudio" rel="noopener">Instagram</a>
+        <span>© 2026 Folkz Studio</span>
+      </div>
     </footer>
-
+  </div>
+</section>
 </body>
 </html>
-```
