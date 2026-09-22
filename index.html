@@ -1,107 +1,706 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FolkzStudio</title>
+    <title>FolkzStudio — Small products, thoughtfully built.</title>
 
     <meta
         name="description"
-        content="FolkzStudio builds small products for people with big ideas."
+        content="FolkzStudio is an independent product studio building small, useful and thoughtful digital products."
     >
 
+    <meta name="theme-color" content="#f4f2ec">
+
+    <meta property="og:title" content="FolkzStudio">
+    <meta
+        property="og:description"
+        content="Small products, thoughtfully built."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fol.kz">
+
     <style>
+        :root {
+            --bg: #f4f2ec;
+            --surface: #ebe9e1;
+            --text: #17231d;
+            --muted: #697069;
+            --line: rgba(23, 35, 29, 0.12);
+            --accent: #263d31;
+            --white: #faf9f5;
+
+            --max-width: 1240px;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Inter",
-                "Segoe UI", sans-serif;
-            background: #f5f3ed;
-            color: #17251e;
-            min-height: 100vh;
+        html {
+            scroll-behavior: smooth;
         }
 
-        main {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 32px;
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro Text",
+                "Segoe UI",
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .container {
+            width: min(calc(100% - 48px), var(--max-width));
+            margin: 0 auto;
+        }
+
+        /* ---------------- NAVIGATION ---------------- */
 
         nav {
+            height: 88px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+            font-size: 20px;
+            font-weight: 650;
+            letter-spacing: -0.045em;
         }
 
-        .contact {
-            text-decoration: none;
-            color: #17251e;
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+
             font-size: 14px;
+            color: var(--muted);
         }
+
+        .nav-link {
+            transition: color 180ms ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+        }
+
+        .nav-contact {
+            color: var(--text);
+
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 3px;
+        }
+
+        /* ---------------- HERO ---------------- */
 
         .hero {
-            max-width: 900px;
-            margin: auto 0;
-            padding: 100px 0;
+            min-height: calc(100vh - 88px);
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 0 120px;
+        }
+
+        .hero-inner {
+            width: 100%;
         }
 
         .eyebrow {
-            font-size: 14px;
-            margin-bottom: 24px;
-            opacity: 0.55;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            letter-spacing: 0.01em;
+
+            margin-bottom: 34px;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
         }
 
         h1 {
-            font-size: clamp(56px, 9vw, 130px);
-            line-height: 0.92;
-            letter-spacing: -0.07em;
-            font-weight: 600;
+            max-width: 1080px;
+
+            font-size: clamp(58px, 9vw, 132px);
+            line-height: 0.91;
+
+            font-weight: 560;
+            letter-spacing: -0.075em;
         }
 
-        .description {
-            max-width: 550px;
-            margin-top: 36px;
-            font-size: 20px;
-            line-height: 1.5;
-            opacity: 0.7;
+        .hero-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 40px;
+
+            margin-top: 70px;
         }
 
-        footer {
+        .hero-description {
+            max-width: 500px;
+
+            color: var(--muted);
+
+            font-size: 19px;
+            line-height: 1.55;
+            letter-spacing: -0.015em;
+        }
+
+        .scroll-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .scroll-line {
+            width: 42px;
+            height: 1px;
+            background: var(--line);
+        }
+
+        /* ---------------- SECTION ---------------- */
+
+        section {
+            padding: 150px 0;
+        }
+
+        .section-header {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
-            opacity: 0.5;
+            align-items: flex-start;
+
+            padding-bottom: 45px;
+
+            border-bottom: 1px solid var(--line);
         }
 
-        @media (max-width: 600px) {
-            main {
-                padding: 24px;
+        .section-number {
+            color: var(--muted);
+
+            font-size: 12px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .section-title {
+            max-width: 650px;
+
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 1;
+            letter-spacing: -0.055em;
+            font-weight: 520;
+        }
+
+        /* ---------------- PRODUCT ---------------- */
+
+        .product {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            min-height: 570px;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .product-info {
+            padding: 70px 70px 70px 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-label {
+            color: var(--muted);
+
+            font-size: 12px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            margin-top: 30px;
+
+            font-size: clamp(54px, 7vw, 94px);
+            line-height: 0.9;
+
+            font-weight: 560;
+            letter-spacing: -0.075em;
+        }
+
+        .product-description {
+            max-width: 430px;
+
+            margin-top: 35px;
+
+            color: var(--muted);
+
+            font-size: 18px;
+            line-height: 1.55;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            width: fit-content;
+
+            margin-top: 45px;
+
+            font-size: 14px;
+
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 5px;
+        }
+
+        .arrow {
+            transition: transform 180ms ease;
+        }
+
+        .product-link:hover .arrow {
+            transform: translate(3px, -3px);
+        }
+
+        .product-visual {
+            margin: 32px 0;
+
+            min-height: 500px;
+
+            background: var(--accent);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .visual-map {
+            position: absolute;
+            inset: 0;
+
+            opacity: 0.17;
+
+            background-image:
+                linear-gradient(
+                    28deg,
+                    transparent 46%,
+                    rgba(255,255,255,.5) 47%,
+                    transparent 48%
+                ),
+                linear-gradient(
+                    142deg,
+                    transparent 46%,
+                    rgba(255,255,255,.4) 47%,
+                    transparent 48%
+                );
+
+            background-size: 80px 80px;
+            transform: rotate(-8deg) scale(1.3);
+        }
+
+        .visual-card {
+            position: relative;
+
+            width: 260px;
+            height: 360px;
+
+            background: var(--white);
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,.22);
+
+            transform: rotate(5deg);
+
+            padding: 20px;
+        }
+
+        .visual-card-top {
+            height: 8px;
+            width: 80px;
+
+            border-radius: 4px;
+
+            background: var(--accent);
+
+            margin-bottom: 28px;
+        }
+
+        .visual-map-inner {
+            height: 220px;
+
+            background:
+                radial-gradient(
+                    circle at 35% 45%,
+                    #263d31 0 5px,
+                    transparent 6px
+                ),
+                radial-gradient(
+                    circle at 70% 30%,
+                    #263d31 0 5px,
+                    transparent 6px
+                ),
+                radial-gradient(
+                    circle at 58% 72%,
+                    #263d31 0 5px,
+                    transparent 6px
+                ),
+                #e9e7df;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-map-inner::before,
+        .visual-map-inner::after {
+            content: "";
+
+            position: absolute;
+
+            width: 160%;
+            height: 1px;
+
+            background: rgba(38,61,49,.18);
+
+            left: -30%;
+        }
+
+        .visual-map-inner::before {
+            top: 45%;
+            transform: rotate(-25deg);
+        }
+
+        .visual-map-inner::after {
+            top: 65%;
+            transform: rotate(18deg);
+        }
+
+        .visual-card-lines {
+            margin-top: 22px;
+
+            display: grid;
+            gap: 9px;
+        }
+
+        .visual-card-lines span {
+            display: block;
+
+            height: 5px;
+
+            background: #dddcd5;
+
+            border-radius: 3px;
+        }
+
+        .visual-card-lines span:nth-child(1) {
+            width: 75%;
+        }
+
+        .visual-card-lines span:nth-child(2) {
+            width: 92%;
+        }
+
+        .visual-card-lines span:nth-child(3) {
+            width: 58%;
+        }
+
+        /* ---------------- PHILOSOPHY ---------------- */
+
+        .philosophy {
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 80px;
+        }
+
+        .philosophy-label {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .philosophy-text {
+            max-width: 780px;
+
+            font-size: clamp(32px, 4.5vw, 62px);
+            line-height: 1.02;
+
+            letter-spacing: -0.055em;
+            font-weight: 500;
+        }
+
+        .philosophy-text span {
+            color: #9a9d96;
+        }
+
+        /* ---------------- ABOUT ---------------- */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+
+            padding-top: 70px;
+        }
+
+        .about-large {
+            font-size: 25px;
+            line-height: 1.35;
+            letter-spacing: -0.025em;
+        }
+
+        .about-small {
+            max-width: 430px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        /* ---------------- CONTACT ---------------- */
+
+        .contact-section {
+            padding-bottom: 110px;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 50px;
+
+            padding-top: 70px;
+        }
+
+        .contact-title {
+            max-width: 850px;
+
+            font-size: clamp(48px, 7vw, 100px);
+            line-height: .92;
+
+            font-weight: 540;
+            letter-spacing: -0.075em;
+        }
+
+        .contact-email {
+            flex-shrink: 0;
+
+            font-size: 15px;
+
+            border-bottom: 1px solid var(--text);
+
+            padding-bottom: 5px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            border-top: 1px solid var(--line);
+
+            padding: 28px 0 34px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 24px;
+        }
+
+        /* ---------------- ANIMATION ---------------- */
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            animation: reveal .8s cubic-bezier(.22,1,.36,1) both;
+        }
+
+        .delay-1 {
+            animation-delay: .08s;
+        }
+
+        .delay-2 {
+            animation-delay: .16s;
+        }
+
+        .delay-3 {
+            animation-delay: .24s;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 800px) {
+
+            .container {
+                width: min(calc(100% - 36px), var(--max-width));
+            }
+
+            nav {
+                height: 74px;
+            }
+
+            .nav-right {
+                gap: 18px;
+            }
+
+            .nav-link {
+                display: none;
             }
 
             .hero {
-                padding: 60px 0;
+                min-height: calc(100vh - 74px);
+                padding: 60px 0 80px;
             }
 
-            .description {
-                font-size: 18px;
+            h1 {
+                font-size: clamp(54px, 16vw, 90px);
             }
 
-            footer {
+            .hero-bottom {
+                align-items: flex-start;
                 flex-direction: column;
-                gap: 8px;
+                margin-top: 50px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            section {
+                padding: 100px 0;
+            }
+
+            .section-header {
+                padding-bottom: 30px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .product {
+                grid-template-columns: 1fr;
+            }
+
+            .product-info {
+                padding: 55px 0 30px;
+            }
+
+            .product-visual {
+                min-height: 430px;
+                margin: 10px 0 0;
+            }
+
+            .visual-card {
+                width: 220px;
+                height: 310px;
+            }
+
+            .visual-map-inner {
+                height: 185px;
+            }
+
+            .philosophy {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .philosophy-text {
+                font-size: 38px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-large {
+                font-size: 22px;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-title {
+                font-size: 54px;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
             }
         }
     </style>
@@ -109,40 +708,280 @@
 
 <body>
 
-<main>
+    <!-- NAVIGATION -->
 
-    <nav>
-        <div class="logo">FolkzStudio</div>
+    <header class="container">
+        <nav>
+            <a href="/" class="logo">FolkzStudio</a>
 
-        <a class="contact" href="mailto:hello@fol.kz">
-            Get in touch
-        </a>
-    </nav>
+            <div class="nav-right">
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#studio" class="nav-link">Studio</a>
 
-    <section class="hero">
+                <a
+                    href="mailto:hello@fol.kz"
+                    class="nav-contact"
+                >
+                    Contact
+                </a>
+            </div>
+        </nav>
+    </header>
 
-        <div class="eyebrow">
-            Independent product studio · 2026
-        </div>
 
-        <h1>
-            Small products.<br>
-            Thoughtfully built.
-        </h1>
+    <!-- HERO -->
 
-        <p class="description">
-            FolkzStudio is a small product studio creating useful,
-            focused and human-centered digital products.
-        </p>
+    <main>
 
-    </section>
+        <section class="hero">
+            <div class="container hero-inner">
+
+                <div class="eyebrow reveal">
+                    <span class="eyebrow-dot"></span>
+                    Independent product studio · 2026
+                </div>
+
+                <h1 class="reveal delay-1">
+                    Small products.<br>
+                    Thoughtfully built.
+                </h1>
+
+                <div class="hero-bottom reveal delay-2">
+
+                    <p class="hero-description">
+                        FolkzStudio is a small product studio creating
+                        useful, focused and human-centered digital products.
+                    </p>
+
+                    <div class="scroll-indicator">
+                        <span class="scroll-line"></span>
+                        Scroll to explore
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PRODUCTS -->
+
+        <section id="products">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-number">
+                        01 / Products
+                    </span>
+
+                    <h2 class="section-title">
+                        Things we are building.
+                    </h2>
+
+                </div>
+
+
+                <article class="product">
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <div class="product-label">
+                                Product · Outdoor
+                            </div>
+
+                            <h3 class="product-name">
+                                CamperBase
+                            </h3>
+
+                            <p class="product-description">
+                                A community and discovery platform for
+                                campers, caravan owners and people who
+                                simply love being outdoors.
+                            </p>
+
+                            <a
+                                href="https://camperbase.org"
+                                class="product-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Explore CamperBase
+                                <span class="arrow">↗</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-visual" aria-hidden="true">
+
+                        <div class="visual-map"></div>
+
+                        <div class="visual-card">
+
+                            <div class="visual-card-top"></div>
+
+                            <div class="visual-map-inner"></div>
+
+                            <div class="visual-card-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHILOSOPHY -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="philosophy">
+
+                    <div class="philosophy-label">
+                        02 / Philosophy
+                    </div>
+
+                    <p class="philosophy-text">
+                        We like small teams, clear ideas and products
+                        that earn their place in people's lives.
+                        <span>
+                            No unnecessary complexity. No noise.
+                        </span>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDIO -->
+
+        <section id="studio">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-number">
+                        03 / Studio
+                    </span>
+
+                    <h2 class="section-title">
+                        Small by design.
+                    </h2>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <p class="about-large">
+                        FolkzStudio is an independent product studio
+                        founded in 2026.
+                    </p>
+
+                    <p class="about-small">
+                        We design and build digital products from idea
+                        to launch. Our focus is simple: understand the
+                        problem, remove the unnecessary, and make
+                        something people genuinely want to use.
+                        <br><br>
+                        We are a small team, which means ideas can move
+                        quickly and every detail still matters.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="contact-section">
+
+            <div class="container">
+
+                <div class="section-number">
+                    04 / Contact
+                </div>
+
+                <div class="contact-content">
+
+                    <h2 class="contact-title">
+                        Have an idea?<br>
+                        Let's talk.
+                    </h2>
+
+                    <a
+                        href="mailto:hello@fol.kz"
+                        class="contact-email"
+                    >
+                        hello@fol.kz ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
 
     <footer>
-        <span>© 2026 FolkzStudio</span>
-        <span>fol.kz</span>
-    </footer>
 
-</main>
+        <div class="container footer-inner">
+
+            <span>
+                © 2026 FolkzStudio
+            </span>
+
+            <div class="footer-right">
+
+                <a
+                    href="https://camperbase.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    CamperBase
+                </a>
+
+                <a href="mailto:hello@fol.kz">
+                    Email
+                </a>
+
+                <span>
+                    fol.kz
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
 
 </body>
 </html>
+```
