@@ -92,7 +92,7 @@
   .apps-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 48px; margin-bottom: clamp(32px, 3.5vw, 48px); }
   .apps-head h2, .about h2 { font-size: clamp(40px, 4.5vw, 64px); letter-spacing: -0.03em; line-height: 1; }
   .apps-head p { max-width: 420px; font-size: 17px; color: var(--muted); }
-  .apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
   @media (max-width: 960px) { .apps { grid-template-columns: 1fr; gap: 20px; max-width: 560px; } }
   .app { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
   .app .band { height: clamp(200px, 17vw, 240px); display: flex; align-items: center; justify-content: center; }
@@ -111,6 +111,8 @@
   .pill.ghost { border: 1px solid var(--line); color: var(--ink); }
   .pill.ghost:hover { border-color: var(--ink); color: var(--ink); }
   .pill svg { width: 14px; height: 14px; }
+  .pill.soon { border: 1px dashed #C9C2B6; color: var(--muted); cursor: default; }
+  .app .band .ph { width: 112px; height: 112px; border-radius: 26px; background: #24466B; color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 44px; letter-spacing: -0.04em; box-shadow: 0 8px 24px rgba(28, 27, 25, 0.12); }
 
   /* About */
   .about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5.5vw, 80px); padding-top: clamp(56px, 8vw, 120px); padding-bottom: clamp(56px, 8vw, 120px); }
@@ -163,22 +165,9 @@
   <section id="apps" class="wrap block" aria-labelledby="apps-title">
     <div class="apps-head">
       <h2 id="apps-title">Our apps</h2>
-      <p>Three apps, each with its own character. All built with the same care.</p>
+      <p>Each app has its own character. All are built with the same care.</p>
     </div>
     <div class="apps">
-      <article class="app">
-        <div class="band" style="background:#2E5E4E"><img src="/assets/icons/camperbase.png" alt="CamperBase app icon" width="112" height="112" loading="lazy"></div>
-        <div class="body">
-          <h3>CamperBase</h3>
-          <p class="tag">Your base for life outdoors.</p>
-          <p class="desc">Campsites, caravan spots and offline maps, with a community of people who live on the road.</p>
-          <div class="actions">
-            <a class="pill solid" href="https://apps.apple.com/app/id6789578719" rel="noopener">App Store</a>
-            <a class="pill ghost" href="https://camperbase.org" rel="noopener">camperbase.org
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </div>
-      </article>
       <article class="app">
         <div class="band" style="background:#FCE5D3"><img src="/assets/icons/untime.png" alt="Untime app icon" width="112" height="112" loading="lazy"></div>
         <div class="body">
@@ -205,7 +194,31 @@
         </div>
       </article>
 
-      
+      <article class="app">
+        <div class="band" style="background:#2E5E4E"><img src="/assets/icons/camperbase.png" alt="CamperBase app icon" width="112" height="112" loading="lazy"></div>
+        <div class="body">
+          <h3>CamperBase</h3>
+          <p class="tag">Your base for life outdoors.</p>
+          <p class="desc">Campsites, caravan spots and offline maps, with a community of people who live on the road.</p>
+          <div class="actions">
+            <a class="pill solid" href="https://apps.apple.com/app/id6789578719" rel="noopener">App Store</a>
+            <a class="pill ghost" href="https://camperbase.org" rel="noopener">camperbase.org
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="app">
+        <div class="band" style="background:#DCE6F0"><div class="ph" role="img" aria-label="Folkz app icon">fz</div></div>
+        <div class="body">
+          <h3>Folkz</h3>
+          <p class="tag">Your people, wherever you land.</p>
+          <p class="desc">An invite-only community for aviation professionals. Meet crew in the city you’re in and swap local tips on every layover.</p>
+          <div class="actions">
+            <span class="pill soon" aria-disabled="true">Coming soon</span>
+            <a class="pill ghost" href="/folkz/">Learn more</a>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 

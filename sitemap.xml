@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://fol.kz/</loc></url>
+  <url><loc>https://fol.kz/folkz/</loc></url>
+  <url><loc>https://fol.kz/folkz/support/</loc></url>
+  <url><loc>https://fol.kz/folkz/privacy/</loc></url>
+  <url><loc>https://fol.kz/folkz/terms/</loc></url>
+  <url><loc>https://fol.kz/folkz/guidelines/</loc></url>
+  <url><loc>https://fol.kz/folkz/delete-account/</loc></url>
 </urlset>
